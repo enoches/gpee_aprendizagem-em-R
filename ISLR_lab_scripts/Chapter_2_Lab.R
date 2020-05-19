@@ -1,6 +1,6 @@
 # Chapter 2 Lab: Introduction to R
 
-# Basic Commands
+# Basic Commands --------------------------------------------------------------
 
 x <- c(1,3,2,5)
 x
@@ -33,7 +33,7 @@ var(y)
 sqrt(var(y))
 sd(y)
 
-# Graphics
+# Graphics --------------------------------------------------------------------
 
 x=rnorm(100)
 y=rnorm(100)
@@ -60,7 +60,7 @@ persp(x,y,fa,theta=30,phi=20)
 persp(x,y,fa,theta=30,phi=70)
 persp(x,y,fa,theta=30,phi=40)
 
-# Indexing Data
+# Indexing Data ---------------------------------------------------------------
 
 A=matrix(1:16,4,4)
 A
@@ -74,7 +74,7 @@ A[-c(1,3),]
 A[-c(1,3),-c(1,3,4)]
 dim(A)
 
-# Loading Data
+# Loading Data ---------------------------------------------------------------
 
 Auto=read.table("Auto.data")
 fix(Auto)
@@ -88,7 +88,7 @@ Auto=na.omit(Auto)
 dim(Auto)
 names(Auto)
 
-# Additional Graphical and Numerical Summaries
+# Additional Graphical and Numerical Summaries --------------------------------
 
 plot(cylinders, mpg)
 plot(Auto$cylinders, Auto$mpg)
