@@ -1,60 +1,54 @@
-# Exercícios do livro ISLR cap 02 feitos por Tyago
+# Exercícios do livro ISLR, cap 02, feitos por Tyago ----
+
+## Na encontro 03, de 03-jun-2020, começamos a editar e rodar o código.
+
 
 
 # Pacotes utilizados ------------------------------
 
 
 # install.packages("readxl")
-library(readxl) # ler arquivo excel
+
 # library(tidyverse)
+library(readxl) # ler arquivo excel
 library(dplyr)
 library(skimr)
 
 
-# Início ---- 
+# Leitura dos dados --------------------------------
 
-
-## Carrega os dados
 
 data <- read_xlsx("tyago_2020-05-17/graficos.xlsx")
 
 
-## Olha os dados
+# Inspeção dos dados
 
-str(data)
+## Primeira olhada: a estrutura do bd 
 
-glimpse(data)
-
-View(data)
-
-skim::skim(data) # sumário do banco de dados
-
-summary(data)
+#dim(data) # mostra somente as dimensões do bd
+# str(data) # função do R base que mostra a estrutura do objeto ou bd
+glimpse(data) # função do tidyverse/dplyr que mostra a estrutura do objeto ou bd
 
 
-glimpse(x = data)
-skim(data = data)
+# Quer fazer uma inspeção visual olhando numa tabela? 
+View(data) 
+
+# Sumário do banco de dados
+skim(data) 
+summary(data) # R base
 
 
-magrittr::pipe
 
-data %>% skim() 
-
-# Atalho: %>% Shift + Alt + M
-
-
-## Modicar os dados? ----
+## Alterações feitas no banco de dados os dados ----------------------
 
 data[is.na(data)] <- 0 
 
-is.na(data$y)
+
+# ATT ------------------------------------------------ 
+## Na aula 03 viemos até aqui. Agora precisamos concluir a formatação do código e
+## rodar os comandos também
 
 
-
-
-data %>% 
-  #select(y) %>% 
-  summarise(mean(y))
 
 cor(data$y,data$x)
 mean(data$y)
