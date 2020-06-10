@@ -6,7 +6,12 @@
 
 
 
-# 1) Boas Práticas -------------------------
+# 1) BOAS PRÁTICAS -------------------------
+
+
+# É muito importante que o código seja legível (contenha espaços separando as coisas) e 
+# seja comentado (porquê versus o quê)
+
 
 # Mostra a área de trabalho
 getwd()
@@ -21,6 +26,27 @@ rm(list = ls()) # limpa todas as variáveis do ambiente.
 
 
 
+# 2) Sintaxe e outros  ------------------------------
+
+# Aprendemos que a função skim() da library skimr pode substituir a função summary()
+# para apresentar um sumário do banco de dados
+skim(data)
 
 
-# 2) Sintaxe ------------------------------
+# vimos que a função is.na() vai mostrar pra gente quais elementos do objeto 
+# são valores faltantes (NA)
+is.na(data$y)
+
+
+
+## magrittr: pipe %>% 
+# Atalho: Shift + Alt + M
+
+data %>% 
+  #select(y) %>% 
+  summarise(mean(y))
+
+data %>% skim() 
+
+
+
