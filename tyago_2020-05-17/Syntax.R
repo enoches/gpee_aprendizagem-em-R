@@ -16,10 +16,14 @@ library(skimr)
 library(here)
 library(ggplot2)
 
+
 # Leitura dos dados --------------------------------
 
 
 # data <- read_xlsx("tyago_2020-05-17/graficos.xlsx")
+
+
+# Leitura dos dados --------------------------------
 
 data <- read_xlsx(here("tyago_2020-05-17", "graficos.xlsx"))
 
@@ -28,7 +32,11 @@ data <- read_xlsx(here("tyago_2020-05-17", "graficos.xlsx"))
 
 ## Primeira olhada: a estrutura do bd 
 
+
 # dim(data) # mostra somente as dimensões do bd
+
+#dim(data) # mostra somente as dimensões do bd
+
 # str(data) # função do R base que mostra a estrutura do objeto ou bd
 glimpse(data) # função do tidyverse/dplyr que mostra a estrutura do objeto ou bd
 
@@ -57,18 +65,23 @@ sum(data$x)
 # usamos o argumento na.rm = TRUE para não dar erro caso tenha NA na variável x
 sum(data$x, na.rm = TRUE) # Essa aqui
 
+
 # Outro exemplo:
 ex <-  c(1:3, NA)
 ex
+
 
 sum(ex, na.rm = TRUE)
 
 
 ## INDICADORES ------------------------------------------------ 
 
+
 cor(data$y, data$x) 
 
+
 mean(data$y, na.rm = TRUE)
+
 
 var(data$y)
 
@@ -118,6 +131,3 @@ install.packages("writexl")
 
 library(writexl)
 write_xlsx(data,"novo.xlsx",col_names = TRUE)
-
-
-
