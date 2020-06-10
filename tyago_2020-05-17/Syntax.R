@@ -1,9 +1,61 @@
-getwd()
-install.packages("readxl")
-library(readxl)
-data<-read_xlsx("graficos.xlsx")
+# Exercícios do livro ISLR cap 02 feitos por Tyago
+
+
+# Pacotes utilizados ------------------------------
+
+
+# install.packages("readxl")
+library(readxl) # ler arquivo excel
+# library(tidyverse)
+library(dplyr)
+library(skimr)
+
+
+# Início ---- 
+
+
+## Carrega os dados
+
+data <- read_xlsx("tyago_2020-05-17/graficos.xlsx")
+
+
+## Olha os dados
+
+str(data)
+
+glimpse(data)
+
 View(data)
-data[is.na(data)]<-0 
+
+skim::skim(data) # sumário do banco de dados
+
+summary(data)
+
+
+glimpse(x = data)
+skim(data = data)
+
+
+magrittr::pipe
+
+data %>% skim() 
+
+# Atalho: %>% Shift + Alt + M
+
+
+## Modicar os dados? ----
+
+data[is.na(data)] <- 0 
+
+is.na(data$y)
+
+
+
+
+data %>% 
+  #select(y) %>% 
+  summarise(mean(y))
+
 cor(data$y,data$x)
 mean(data$y)
 var(data$y)
