@@ -10,12 +10,16 @@ library(nycflights13) # Flights that Departed NYC in 2013
 
 
 
-
 # DADOS: VOOS SAÍDOS DE NYC EM 2013 ---------------------------------------
 
+
 data("flights")
+
 ?flights
+
 glimpse(flights)
+
+View(flights)
 
 
 # SINTAXE BÁSICA DO GGPLOT2 ------------------------------------------------
@@ -27,15 +31,23 @@ glimpse(flights)
 # as variáveis são mapeadas para atributos estéticos (valor/nível, tamanho, cor, ...) e em seguida representadas por geometrias/ objetos geométricos (pontos, linhas, barras)
 
 
+ggplot() + geom_point()
 
-ggplot(data = meus_dados, mapping = aes(x = var1, y = var2)) +
+
+ggplot(data = meus_dados, 
+       mapping = aes(x = var1, y = var2), 
+       color = red
+       ) +
   geom_point()
   
 
 # argumentos data = , mapping = 
-ggplot(meus_dados, aes(x = var1, y = var2)) +
+
+ggplot(data = meus_dados, mapping = aes(x = var1, y = var2)) +
   geom_point()
 
+ggplot(meus_dados, aes(x = var1, y = var2)) +
+  geom_point()
 
 
 # argumentos dentro dos geoms
@@ -45,6 +57,7 @@ ggplot() +
 
 # dados usando pipe
 meus_dados %>% 
+
 ggplot(aes(x = var1, y = var2)) +
   geom_point()
 
@@ -64,6 +77,10 @@ ggplot(aes(x = var1, y = var2)) +
 alaska_flights <- flights %>% 
   filter(carrier == "AS")
 
+ggplot(data = alaska_flights, 
+       mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.3)
+
 
 
 
@@ -74,6 +91,22 @@ alaska_flights <- flights %>%
 ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
   geom_point()
 
+# Quantos carriers diferentes existem no banco?
+unique(flights$carrier)
+
+flights %>% filter(carrier) %>% distinct() # pq não deu certo?
+
+flights %>% distinct(carrier)
+
+# Quantas carriers diferentes?
+
+flights %>% distinct(carrier) %>% count()
+
+origensDestinos = flights%>%distinct(origin, dest)
+
+origensDestinos2 = flights %>% distinct(carrier, origin, dest)
+
+                                     
 
 # (LC2.2) What are some practical reasons why dep_delay and arr_delay have a positive relationship?
 #   
@@ -94,7 +127,11 @@ ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 ## GRÁFICO DE LINHA --------------------------------------------------------
 
+
 nycflights13::weather
+
+glimpse(weather)
+
 
 early_january_weather <- weather %>% 
   filter(origin == "EWR" & month == 1 & day <= 15)
@@ -102,7 +139,7 @@ early_january_weather <- weather %>%
 # (LC2.9) Take a look at both the weather and early_january_weather data frames by running View(weather) and View(early_january_weather). In what respect do these data frames differ?
 
 # (LC2.10) View() the flights data frame again. Why does the time_hour variable uniquely identify the hour of the measurement, whereas the hour variable does not?
-
+early_january_weather %>% select(time_hour, hour) %>% View()
 
 
 ggplot(data = early_january_weather, 
@@ -110,8 +147,7 @@ ggplot(data = early_january_weather,
   geom_line()
 
 
-ggplot(data = weather, mapping = aes(x = temp)) +
-  geom_histogram(color = "white", fill = "steelblue")
+
 
 
 
@@ -122,9 +158,22 @@ ggplot(data = weather, mapping = aes(x = temp)) +
 ggplot(data = weather, mapping = aes(x = temp)) +
   geom_histogram()
 
-
 ggplot(data = weather, mapping = aes(x = temp)) +
   geom_histogram(color = "white")
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue", 
+                 bins = 50)
+
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(color = "white", 
+                 fill = "steelblue", 
+                 binwidth = 20)
+
+min(weather$temp, na.rm = TRUE)
+max(weather$temp, na.rm = TRUE)
 
 ## BOXPLOT -----------------------------------------------------------------
 
