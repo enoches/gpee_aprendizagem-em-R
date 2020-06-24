@@ -200,6 +200,7 @@ max(weather$temp, na.rm = TRUE)
 ggplot(data = weather, mapping = aes(x = month, y = temp)) +
   geom_boxplot()
 
+
 ggplot(data = weather, mapping = aes(x = factor(month), y = temp)) +
   geom_boxplot()
 
@@ -212,18 +213,39 @@ ggplot(data = weather, mapping = aes(x = factor(month), y = temp)) +
 fruits <- tibble(
   fruit = c("apple", "apple", "orange", "apple", "orange")
 )
+
 fruits_counted <- tibble(
   fruit = c("apple", "orange"),
   number = c(3, 2)
 )
 
 
+
+
+# There are two types of bar charts: geom_bar() and geom_col(). 
+# 
+# geom_bar() makes the height of the bar proportional to the number of cases in each group (or if the weight aesthetic is supplied, the sum of the weights). 
+# 
+# If you want the heights of the bars to represent values in the data, use geom_col() instead. 
+# 
+# geom_bar() uses stat_count() by default: it counts the number of cases at each x position. 
+# 
+# geom_col() uses stat_identity(): it leaves the data as is.
+# 
+
+
 ggplot(data = fruits, mapping = aes(x = fruit)) +
   geom_bar()
+
 
 ggplot(data = fruits_counted, mapping = aes(x = fruit, y = number)) +
   geom_col()
 
+ggplot(data = fruits_counted, mapping = aes(x = fruit, y = number)) +
+  geom_bar(stat = "identity")
+
+ggplot(data = fruits, mapping = aes(x = fruit)) +
+  geom_col()
 
 # Is not pre-counted in your data frame, we use geom_bar().
 
