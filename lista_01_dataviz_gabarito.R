@@ -61,12 +61,24 @@ late_january_weather <- weather %>%
 
 ### 01 ----
 # Bd alaska_flights: Replique o gráfico de dispersão feito na
-# aula 05. O que o gráfico mostra?  Em seguida adicione uma 
+# aula 05. O que o gráfico mostra?  Em seguida adicione uma
 # terceira estética  (ex: cor ou tamanho) ao gráfico mapeando a
-# outra variável 
+# outra variável
 
+# > RESP:
 
+# Gráfico original
+ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point()
 
+# Adicionando outra estética: ex: mês
+ggplot(data = alaska_flights,
+  mapping = aes(x = dep_delay, y = arr_delay, colour = month)) +
+  geom_point()
+
+# Para esta visualização fazer sentido, o meses precisam ser lidos fatores:
+ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay, colour = factor(month))) +
+  geom_point()
 
 
 
@@ -78,7 +90,16 @@ late_january_weather <- weather %>%
 # se melhora a visualização. 
 
 
-
+# Resposta:
+ggplot(
+  data = flights_II,
+  mapping = aes(
+    x = dep_delay,
+    y = arr_delay,
+    colour = carrier
+  )
+) +
+  geom_point(alpha = 0.5)
 
 
 #### 03 ---- 
@@ -86,7 +107,18 @@ late_january_weather <- weather %>%
 # feito na aula 05. Em seguida acrescente a marcação dos pontos
 # (cada par ordenado de `time_hour` e `temp`). 
 
+# Resposta
+ggplot(data = early_january_weather, 
+  mapping = aes(x = time_hour, y = temp)) +
+  geom_line() + 
+  geom_point()
 
+
+# Incluindo um frufru: 
+ggplot(data = early_january_weather, 
+  mapping = aes(x = time_hour, y = temp)) +
+  geom_line() + 
+  geom_point(aes(color = temp))
 
 
 ### 04 ---- 
@@ -96,3 +128,9 @@ late_january_weather <- weather %>%
 # `origin`). Diante disso, utilize uma FACETA para obter um
 # gráfico de linha para cada um dos aeroportos.
 
+
+#Resposta:
+ggplot(data = late_january_weather, 
+  mapping = aes(x = time_hour, y = temp)) +
+  geom_line() + 
+  facet_wrap(~ origin)

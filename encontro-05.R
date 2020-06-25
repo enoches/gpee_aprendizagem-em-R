@@ -1,5 +1,6 @@
 # Encontro 05 - Aprendizagem em R ----
 # 2020-jun-17, Enoch Filho
+# Atualizado em 2020-06-24
 
 
 # Hoje vamos entrar no mundo das visualizações! Usaremos como base o capítulo 02
@@ -93,7 +94,7 @@ alaska_flights <- flights %>%
 
 ggplot(data = alaska_flights, 
        mapping = aes(x = dep_delay, y = arr_delay)) +
-  geom_point(alpha = 0.3)
+  geom_point(alpha = 0.7)
 
 
 
@@ -192,7 +193,7 @@ ggplot(data = weather, mapping = aes(x = temp)) +
 min(weather$temp, na.rm = TRUE)
 max(weather$temp, na.rm = TRUE)
 
-## ------------------------ __PARAMOS AQUI__ -----
+
 
 ## BOXPLOT -----------------------------------------------------------------
 
@@ -204,7 +205,7 @@ ggplot(data = weather, mapping = aes(x = month, y = temp)) +
 ggplot(data = weather, mapping = aes(x = factor(month), y = temp)) +
   geom_boxplot()
 
-
+# Dica: o pacote forcats permite que se manipule os fatores
 
 
 ## GRÁFICO DE BARRAS -------------------------------------------------------
@@ -234,9 +235,11 @@ fruits_counted <- tibble(
 # 
 
 
-ggplot(data = fruits, mapping = aes(x = fruit)) +
-  geom_bar()
+ggplot(data = fruits, mapping = aes(x = fruit, fill = fruit)) +
+  geom_bar() 
 
+ggplot(data = fruits, mapping = aes(x = fruit, fill = fruit)) +
+  geom_bar()
 
 ggplot(data = fruits_counted, mapping = aes(x = fruit, y = number)) +
   geom_col()
