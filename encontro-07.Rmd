@@ -2,11 +2,7 @@
 title: "Encontro 07"
 author: "Enoch Sousa Filho"
 date: "01-jul-2020"
-output:
-  html_notebook: default
-  pdf_document: 
-    toc: yes
-    latex_engine: xelatex
+output: html_notebook
 ---
 
 
