@@ -1,0 +1,203 @@
+---
+title: "Encontro 07"
+author: "Enoch Sousa Filho"
+date: "01-jul-2020"
+output:
+  html_notebook: default
+  pdf_document: 
+    toc: yes
+    latex_engine: xelatex
+---
+
+
+## Hoje  
+
+Ainda sobre visualizações, vimos:  
+
+1. FACETAS: diferenças entre `facet_wrap` e `facet_grid`  
+1. AJUSTES DE POSIÇÃO: position = "dodge", "stack", "fill"  
+
+Também vimos que para produzir as visualizações/ gráficos, muitas vezes precisamos manipular a base de dados antes plotar os gráficos. 
+Fernanda Caires mostrou a utilização dos 3 tipos de posição utilizados em gráficos com barras, e por fim, apresentou novas versões de gráficos de sua pesquisa.  
+
+
+
+OBS: Desta vez não utilizei um scrip do R (arquivo.r) mas sim um "R Notebok". 
+Neste caso o objetivo é que vcs tomem conhecimento da existência de documentos do tipo R markdown. Para saber mais:  
+
++ [Diferença entre R MarkDown e R NoteBook](https://www.it-swarm.dev/pt/r/diferenca-entre-r-markdown-e-r-notebook/832595179/)  
++ [mais um link](http://sillasgonzaga.com/material/curso_visualizacao/apresentacao-de-dados-com-relatorios.html)  
++ [outro link](https://bookdown.org/yihui/rmarkdown/)  
+
+
+
+## Carregar os pacotes  
+```{r pacotes, message=FALSE, warning=FALSE}
+
+# Carregando pacotes:
+
+library(dplyr) # A Grammar of Data Manipulation, CRAN v1.0.0
+library(tidyr) # Tidy Messy Data, CRAN v1.1.0
+library(ggplot2) # Create Elegant Data Visualisations Using the Grammar of Graphics, CRAN v3.3.2 
+library(skimr) # Compact and Flexible Summaries of Data, CRAN v2.1.1
+
+# install.packages("fivethirtyeight")
+library(fivethirtyeight) # Data and Code Behind the Stories and Interactives at 'FiveThirtyEight', CRAN v0.5.0 
+
+```
+
+
+
+## Banco de dados de Diamantes  
+
+Hoje vamos utilizar o banco de dados de diamantes: 
+
+```{r}
+data("diamonds")
+```
+
+```{r}
+diamonds %>% select(carat, cut, color, price) %>% skim()
+```
+
+
+ 
+## FACETAS 
+ 
+ Vamos gerar um gráfico de densidade com todas as observações da variável preço (preço de cada pedra de diamante)  
+```{r}
+ggplot(diamonds, aes(x = price)) +
+  geom_density()
+```
+ 
+ 
+### facet_wrap  
+ 
+ Então queremos viusualizar o banco de dados desagregando o preço das pedras de acordo com o tipo/ qualidade do corte de cada uma delas (variável `cut`)  
+```{r}
+ggplot(diamonds, aes(x = price)) +
+  geom_density() +
+  facet_wrap(~ cut)
+``` 
+ 
+ Obs: facet_wrap(~ cut) quando usamos o til, isto é uma notação de fórumla. 
+ Outra maneira de chamar a faceta seria: facet_wrap(vars(cut)). 
+ Também é possível escolher a quantidade de colunas ou linhas em que os gráficos ficarão organizados. Ex: ncol = 2 ou nrow = 2
+ 
+
+### facet_grid  
+
+Esta faceta é utilizada para desagregar os ainda mais. Desta vez, por duas váriaves.  
+Os subgráficos ficam dispostos em formato de matriz.  
+
+Aqui, o mesmo gráfico, desta vez abrindo por `cut` (Fair, Good, ...) e `color` (D, E,...). Para melhorar a visualização, também estamos mapeando a variável `color` à estética de preenchimento de cor (`fill =`` )  
+
+```{r}
+
+ggplot(diamonds, aes(x = price, fill = color)) +
+  geom_density() +
+  facet_grid(cut ~ color)
+
+# facet_grid(rows = vars(cut), cols = vars(color))
+
+```
+
+
+A título de visualização, repetiremos o gráfico produzindo histogramas:  
+```{r}
+
+ggplot(diamonds, aes(x = price)) +
+  geom_histogram(aes(fill = color)) +
+  facet_grid(rows = vars(cut), cols = vars(color))
+
+```
+
+
+
+## AJUSTES DE POSIÇÃO 
+
+Em seguida, com a colaboração de  Fernanda, vimos as possibilidades de  ajustes de posicionamento das barras de um gráfico.   
+
+Referência: ModernDive, cap 02 e cap 04 seção 4.2  
+
+Banco de dados de consumo de bebidas retirado do pacote `fivethirtyeight`  
+
+```{r}
+
+data("drinks")
+glimpse(drinks)
+
+```
+
+Criou-se um novo banco de dados contendo dados selecionados: 
+
+```{r}
+
+drinks_smaller <- drinks %>% 
+  filter(country %in% c("USA", "China", "Italy", "Saudi Arabia")) %>% 
+  select(-total_litres_of_pure_alcohol) %>% 
+  rename(beer = beer_servings, 
+    spirit = spirit_servings, 
+    wine = wine_servings
+    )
+
+```
+
+
+Vejamos como ficou:  
+```{r}
+drinks_smaller
+```
+
+
+Para fazer os gráficos será necessário colocar o banco `drinks_smaller` em formato arrumado (tidy):  
+```{r}
+drinks_smaller_tidy <- drinks_smaller %>% 
+  pivot_longer(names_to = "type", 
+               values_to = "servings", 
+               cols = -country)
+```
+ 
+
+Agora sim! Veja:  
+```{r}
+
+drinks_smaller_tidy
+
+```
+
+
+Podemos então experimentar as diferentes visualizações: 
+
+
+### Position = "dodge"  
+
+```{r remedy001}
+
+ggplot(drinks_smaller_tidy, aes(x = country, y = servings, fill = type)) +
+  geom_col(position = "dodge")
+
+```
+
+
+### Position = "stack"  
+  
+```{r remedy002}
+
+ggplot(drinks_smaller_tidy, aes(x = country, y = servings, fill = type)) +
+  geom_col(position = "stack")
+
+```
+  
+
+
+### Position = ""dodge""   
+
+```{r remedy003}
+  
+ggplot(drinks_smaller_tidy, aes(x = country, y = servings, fill = type)) +
+  geom_col(position = "fill")
+
+```
+
+
