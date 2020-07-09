@@ -7,9 +7,15 @@
 
 O objetivo é estudar a linguagem R: métodos estatísticos/ econométricos/ machine learning...  
 
-Vamos replicar os códigos e exercícios do livro [An Introduction to Statistical Learning: With Applications in R](http://faculty.marshall.usc.edu/gareth-james/ISL/) (ISLR).  
+~~Vamos replicar os códigos e exercícios do livro [An Introduction to Statistical Learning: With Applications in R](http://faculty.marshall.usc.edu/gareth-james/ISL/) (ISLR).~~
 
 
+## OBS 
+
+Este repositório está no github: (https://github.com/enoches/gpee_aprendizagem-em-R)  
+
+Os avisos estão no Gloogle Classroom:  
+(https://classroom.google.com/u/0/c/ODc0OTI1MjUxOTZa)
 
 
 
@@ -29,9 +35,4 @@ Vamos replicar os códigos e exercícios do livro [An Introduction to Statistica
 - Entrar neste projeto: (https://rstudio.cloud/project/1291558)  
 - Clicar em "Save a permanent copy"
 
-
-
-## OBS 
-
-Este repositório está no github: (https://github.com/enoches/gpee_aprendizagem-em-R)
 
