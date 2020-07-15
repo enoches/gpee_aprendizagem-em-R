@@ -19,11 +19,16 @@ Fernanda Caires mostrou a utilização dos 3 tipos de posição utilizados em gr
 
 
 OBS: Desta vez não utilizei um scrip do R (arquivo.r) mas sim um "R Notebok". 
-Neste caso o objetivo é que vcs tomem conhecimento da existência de documentos do tipo R markdown. Para saber mais:  
+Neste caso o objetivo é que vcs tomem conhecimento da existência de documentos do tipo R markdown. 
+
+Para saber mais:  
 
 + [Diferença entre R MarkDown e R NoteBook](https://www.it-swarm.dev/pt/r/diferenca-entre-r-markdown-e-r-notebook/832595179/)  
 + [mais um link](http://sillasgonzaga.com/material/curso_visualizacao/apresentacao-de-dados-com-relatorios.html)  
 + [outro link](https://bookdown.org/yihui/rmarkdown/)  
+
+
+Abaixo você deve rodar e observar cada chunk. Um chunk começa com "```". Para roda-los, do lado direito de cada um clique no triângulo verde. 
 
 
 
@@ -46,7 +51,7 @@ library(fivethirtyeight) # Data and Code Behind the Stories and Interactives at 
 
 ## Banco de dados de Diamantes  
 
-Hoje vamos utilizar o banco de dados de diamantes: 
+Hoje vamos utilizar o banco de dados de diamantes nessa primeira parte: 
 
 ```{r}
 data("diamonds")

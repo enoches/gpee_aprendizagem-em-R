@@ -77,7 +77,8 @@ ggplot(data = alaska_flights,
   geom_point()
 
 # Para esta visualização fazer sentido, o meses precisam ser lidos fatores:
-ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay, colour = factor(month))) +
+ggplot(data = alaska_flights, 
+  mapping = aes(x = dep_delay, y = arr_delay, colour = factor(month))) +
   geom_point()
 
 
