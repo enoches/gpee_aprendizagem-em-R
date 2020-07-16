@@ -21,7 +21,9 @@ install.packages("skimr") # Compact and Flexible Summaries of Data
 install.packages("datapasta") # R Tools for Data Copy-Pasta
 install.packages("ISLR") # Data for an Introduction to Statistical Learning with Applications in R
 
-
+install.packages("remedy")
+install.packages("nycflights13")
+install.packages("usethis")
 
 # Depois estes:  -------------------------------------
 
@@ -35,4 +37,4 @@ install.packages("AER") # Applied Econometrics with R
 install.packages("car") # Companion to Applied Regression
 install.packages("estimatr") # Fast Estimators for Design-Based Inference
 install.packages("gapminder") # Data from Gapminder
-install.packages("sf") # Simple Features for R
+install.packages("sf") # Simple Features for R 
