@@ -1,30 +1,22 @@
  
-# Grupo de estudos do grupo de economia espacial da UFBA =D  
-
-20-maio-2020
-
-
-
-O objetivo é estudar a linguagem R: métodos estatísticos/ econométricos/ machine learning...  
-
-~~Vamos replicar os códigos e exercícios do livro [An Introduction to Statistical Learning: With Applications in R](http://faculty.marshall.usc.edu/gareth-james/ISL/) (ISLR).~~
-
-
-## OBS 
-
-Este repositório está no github: (https://github.com/enoches/gpee_aprendizagem-em-R)  
-
-Os avisos estão no Gloogle Classroom:  
-(https://classroom.google.com/u/0/c/ODc0OTI1MjUxOTZa)
+# Grupo de estudos de aprendizagem em R/ Data Science com R — UFBA
+Enoch Filho et. al.
+20-maio-2020  
 
 
 
-## Preparativos    
+## Instruções e Preparativos  
+
+Este repositório está no github: [gpee-aprendizagem-em-R](https://github.com/enoches/gpee_aprendizagem-em-R)  
+
+Os avisos estão no [Gloogle Classroom](https://classroom.google.com/u/0/c/ODc0OTI1MjUxOTZa)  
+
+
 
 ### Para quem for baixar o programa no computador: 
 
-- Instalar o R 4.0 (https://cran.rstudio.com/bin/windows/base/)  
-- Instalar o RStudio (preview da próxima versão, mas que está estável e dá pra usar tranquilamente) (https://rstudio.com/products/rstudio/download/preview/)  
+- Instalar ou atualizar o R mais recente (https://cran.rstudio.com/bin/windows/base/)  
+- Instalar ou atualizar o RStudio mais recente (https://rstudio.com/products/rstudio/download/)  
 - Instalar os programas do script `instalar-pacotes.R`
 
 
@@ -33,6 +25,4 @@ Os avisos estão no Gloogle Classroom:
 
 - Criar uma conta gratuita no RStudio Cloud (https://rstudio.cloud/)   
 - Entrar neste projeto: (https://rstudio.cloud/project/1291558)  
-- Clicar em "Save a permanent copy"
-
-
+- Clicar em "Save a permanent copy"  
