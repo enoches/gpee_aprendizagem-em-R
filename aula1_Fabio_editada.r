@@ -287,3 +287,6 @@ pioresVoosdeCadaDia <- voos %>%
   group_by(Data, origin) %>%
   filter(dep_delay >= quantile(dep_delay, .99, na.rm = T)) %>%
   ungroup()
+
+
+unite() 

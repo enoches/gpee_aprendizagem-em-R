@@ -160,6 +160,7 @@ drinks_smaller_tidy <- drinks_smaller %>%
 ```
  
 
+
 Agora sim! Veja:  
 ```{r}
 
@@ -201,4 +202,28 @@ ggplot(drinks_smaller_tidy, aes(x = country, y = servings, fill = type)) +
 
 ```
 
+Gráfico de dispersão 
+```{r}
+
+drinks_smaller_tidy %>% 
+  ggplot( aes(x = servings, y = servings, color = type, size = servings)) +
+  geom_point()
+
+```
+
+```{r}
+vendas <- runif(12, 200, 800) %>% round()
+```
+
+
+```{r}
+
+data.frame(c(
+  country = drinks_smaller_tidy$country,
+  type = drinks_smaller_tidy$type,
+  servings = drinks_smaller_tidy$servings,
+  vendas = vendas
+  )) %>% head()
+
+```
 
