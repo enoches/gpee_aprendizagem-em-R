@@ -3,7 +3,7 @@ Grupo de estudos de aprendizagem em R/ Data Science com R — UFBA
 
 Enoch Filho et. al.  
 + 20-maio-2020  
-+ (atualizado em 202-05-20)
++ (atualizado em 2020-05-20)
 
 ## Instruções e Preparativos
 
